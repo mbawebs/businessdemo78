@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BullyCampCalb Kennel | Gotty</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#050706;color:#fff;font-family:'Montserrat',sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{width:100%;display:block}
+
+:root{
+  --green:#8cff00;
+  --aqua:#00d9ff;
+  --gold:#d9a441;
+  --dark:#050706;
+  --panel:#0d120f;
+  --line:rgba(255,255,255,.14);
+}
+
+.container{width:90%;max-width:1400px;margin:auto}
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+  padding:22px 0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.86),rgba(0,0,0,0));
+}
+
+.nav-wrap{display:flex;justify-content:space-between;align-items:center}
+
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.25rem;
+  letter-spacing:3px;
+}
+
+.logo span{color:var(--green)}
+
+.menu{
+  display:flex;
+  gap:30px;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.menu a:hover{color:var(--green)}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  background:#050706;
+}
+
+.hero-photo{
+  min-height:100vh;
+  background:
+    linear-gradient(to right,rgba(0,0,0,.08),rgba(0,0,0,.78)),
+    url('hero.png') center/cover;
+  position:relative;
+}
+
+.hero-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 45% 55%,rgba(140,255,0,.18),transparent 34%),
+    linear-gradient(to top,#050706 0%,transparent 25%);
+}
+
+.hero-text{
+  display:flex;
+  align-items:center;
+  padding:120px 6vw 70px;
+  position:relative;
+  background:
+    radial-gradient(circle at 80% 40%,rgba(0,217,255,.14),transparent 32%),
+    linear-gradient(90deg,#060806,#09110b);
+}
+
+.kicker{
+  color:var(--green);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:5px;
+  font-size:.78rem;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,12vw,12rem);
+  line-height:.78;
+  letter-spacing:5px;
+}
+
+.hero h1 span{
+  color:var(--green);
+  text-shadow:0 0 35px rgba(140,255,0,.35);
+}
+
+.hero p{
+  max-width:600px;
+  color:#ddd;
+  line-height:1.8;
+  margin-top:28px;
+  font-size:1.05rem;
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:36px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 34px;
+  border-radius:100px;
+  background:linear-gradient(135deg,var(--green),#eaff7c);
+  color:#071000;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.8rem;
+  font-weight:900;
+  box-shadow:0 0 30px rgba(140,255,0,.35);
+}
+
+.btn.outline{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.24);
+  color:#fff;
+  box-shadow:none;
+}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3,155px);
+  gap:16px;
+  margin-top:52px;
+}
+
+.stat{
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  border-radius:18px;
+  padding:18px;
+}
+
+.stat strong{
+  display:block;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.6rem;
+  color:var(--green);
+}
+
+.stat small{
+  color:#aaa;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+  font-weight:900;
+}
+
+.float-card{
+  position:absolute;
+  left:7%;
+  bottom:9%;
+  z-index:5;
+  width:320px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.62);
+  backdrop-filter:blur(10px);
+  border-radius:28px;
+  padding:28px;
+}
+
+.float-card strong{
+  display:block;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4.2rem;
+  color:var(--green);
+  line-height:.8;
+}
+
+.float-card small{
+  color:#aaa;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.strip{
+  background:linear-gradient(90deg,#203500,var(--green),var(--aqua),var(--green),#203500);
+  color:#061000;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:16px 0;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;
+  letter-spacing:3px;
+}
+
+.track{
+  display:inline-block;
+  animation:move 18s linear infinite;
+}
+
+@keyframes move{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+.section-head{margin-bottom:48px}
+
+.section-head small{
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-weight:900;
+}
+
+.section-head h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,9vw,9rem);
+  line-height:.85;
+  letter-spacing:4px;
+  margin-top:12px;
+}
+
+.stud{
+  padding:120px 0;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(0,217,255,.16),transparent 30%),
+    #050706;
+}
+
+.stud-layout{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:30px;
+  align-items:stretch;
+}
+
+.stud-info{
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#121b12,#050805);
+  border-radius:36px;
+  padding:52px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.stud-info h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:7.4rem;
+  line-height:.78;
+  color:var(--green);
+  letter-spacing:3px;
+}
+
+.stud-info p{
+  color:#d6d6d6;
+  line-height:1.8;
+  margin-top:24px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:32px;
+}
+
+.tags span{
+  border:1px solid var(--line);
+  background:#050804;
+  padding:12px 18px;
+  border-radius:100px;
+  text-transform:uppercase;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.mini-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:42px;
+}
+
+.mini{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#060906;
+  padding:25px;
+}
+
+.mini strong{
+  display:block;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.3rem;
+  color:var(--aqua);
+}
+
+.mini p{
+  margin:0;
+  color:#aaa;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:.75rem;
+}
+
+.stud-photo{
+  min-height:760px;
+  border-radius:36px;
+  border:1px solid var(--line);
+  background:url('stud.png') center/cover;
+  position:relative;
+  overflow:hidden;
+}
+
+.stud-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.62),transparent 48%);
+}
+
+.stud-label{
+  position:absolute;
+  left:36px;
+  bottom:34px;
+  z-index:3;
+}
+
+.stud-label small{
+  display:block;
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-weight:900;
+}
+
+.stud-label h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,11vw,11rem);
+  line-height:.78;
+  letter-spacing:5px;
+}
+
+.program{
+  padding:120px 0;
+  background:#081008;
+}
+
+.program-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.program-card{
+  min-height:430px;
+  border-radius:30px;
+  padding:34px;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+
+.program-card:nth-child(1){
+  background:
+    linear-gradient(to top,rgba(0,0,0,.92),transparent),
+    url('https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?q=80&w=1200') center/cover;
+}
+
+.program-card:nth-child(2){
+  background:
+    linear-gradient(to top,rgba(0,0,0,.92),transparent),
+    url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1200') center/cover;
+}
+
+.program-card:nth-child(3){
+  background:
+    linear-gradient(to top,rgba(0,0,0,.92),transparent),
+    url('https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?q=80&w=1200') center/cover;
+  grid-column:span 2;
+}
+
+.program-card h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;
+  line-height:.85;
+}
+
+.program-card p{
+  color:#ddd;
+  margin-top:14px;
+  line-height:1.6;
+}
+
+.banner{
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.9)),
+    url('hero.png') center/cover fixed;
+}
+
+.banner h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,13vw,13rem);
+  line-height:.78;
+  letter-spacing:5px;
+}
+
+.banner span{color:var(--green)}
+
+.gallery{
+  padding:120px 0;
+  background:#050706;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
+
+.gallery-col{
+  display:grid;
+  gap:18px;
+}
+
+.gallery-item{
+  height:300px;
+  border-radius:26px;
+  overflow:hidden;
+  background:#111;
+}
+
+.gallery-item.tall{
+  height:620px;
+}
+
+.gallery-item img{
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.gallery-item:hover img{transform:scale(1.08)}
+
+.contact{
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.96)),
+    url('stud.png') center/cover;
+}
+
+.contact h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,12vw,12rem);
+  line-height:.78;
+  letter-spacing:4px;
+}
+
+.contact span{color:var(--green)}
+
+.contact p{
+  max-width:650px;
+  color:#ddd;
+  line-height:1.8;
+  margin:28px auto 36px;
+}
+
+footer{
+  padding:35px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  color:#777;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.8rem;
+}
+
+@media(max-width:900px){
+  .menu{display:none}
+
+  .hero,
+  .stud-layout,
+  .program-grid,
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-photo{
+    min-height:55vh;
+  }
+
+  .hero-text{
+    padding:90px 6vw 70px;
+  }
+
+  .float-card{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    margin:28px;
+    width:auto;
+  }
+
+  .hero-stats,
+  .mini-stats{
+    grid-template-columns:1fr;
+  }
+
+  .stat{max-width:260px}
+
+  .stud-info{padding:32px}
+
+  .stud-info h3{font-size:5.5rem}
+
+  .stud-photo{min-height:560px}
+
+  .program-card:nth-child(3){
+    grid-column:auto;
+  }
+
+  .gallery-item,
+  .gallery-item.tall{
+    height:420px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-wrap">
+    <div class="logo">BULLYCAMPCALB <span>KENNEL</span></div>
+    <div class="menu">
+      <a href="#stud">Gotty</a>
+      <a href="#program">Program</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-photo">
+    <div class="float-card">
+      <strong>GOTTY</strong>
+      <small>Super Producer</small>
+    </div>
+  </div>
+
+  <div class="hero-text">
+    <div>
+      <div class="kicker">Lake Nona • Orlando, Florida</div>
+
+      <h1>
+        BULLY<br>
+        <span>CAMPCALB</span>
+      </h1>
+
+      <p>
+        Welcome to BullyCampCalb Kennel — Florida based bully program focused on
+        micro bullies, exotic bullies, American bullies, and powerful productions.
+      </p>
+
+      <div class="buttons">
+        <a href="#stud" class="btn">View Gotty</a>
+        <a href="#contact" class="btn outline">Message Us</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>24.5K</strong>
+          <small>Followers</small>
+        </div>
+
+        <div class="stat">
+          <strong>602</strong>
+          <small>Posts</small>
+        </div>
+
+        <div class="stat">
+          <strong>FL</strong>
+          <small>Florida</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="strip">
+  <div class="track">
+    BULLYCAMPCALB KENNEL • GOTTY • MICRO BULLY • EXOTIC BULLY • AMERICAN BULLY • ORLANDO FLORIDA •
+    BULLYCAMPCALB KENNEL • GOTTY • MICRO BULLY • EXOTIC BULLY • AMERICAN BULLY • ORLANDO FLORIDA •
+  </div>
+</div>
+
+<section class="stud" id="stud">
+  <div class="container">
+
+    <div class="section-head">
+      <small>Main Stud</small>
+      <h2>Gotty The Producer</h2>
+    </div>
+
+    <div class="stud-layout">
+
+      <div class="stud-info">
+        <div>
+          <h3>GOTTY</h3>
+
+          <p>
+            GOTTY is the main stud of BullyCampCalb Kennel — a super producer
+            bringing compact structure, strong bully type, and serious presence.
+          </p>
+
+          <div class="tags">
+            <span>Micro Bully</span>
+            <span>Exotic Bully</span>
+            <span>American Bully</span>
+            <span>Super Producer</span>
+            <span>Florida</span>
+          </div>
+        </div>
+
+        <div class="mini-stats">
+          <div class="mini">
+            <strong>01</strong>
+            <p>Main Stud</p>
+          </div>
+
+          <div class="mini">
+            <strong>3500</strong>
+            <p>Stud Fee Mentioned</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stud-photo">
+        <div class="stud-label">
+          <small>Featured Stud</small>
+          <h3>GOTTY</h3>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="program" id="program">
+  <div class="container">
+
+    <div class="section-head">
+      <small>The Program</small>
+      <h2>Florida Bully Camp</h2>
+    </div>
+
+    <div class="program-grid">
+
+      <div class="program-card">
+        <div>
+          <h3>Micro<br>Bully</h3>
+          <p>Compact bully type with low structure, headpiece, bone, and presence.</p>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div>
+          <h3>Exotic<br>Bully</h3>
+          <p>Focused on standout look, body, type, and memorable productions.</p>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div>
+          <h3>Stud<br>Program</h3>
+          <p>GOTTY leads the yard as the featured producer for serious bully programs.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="banner">
+  <h2>SUPER<br><span>PRODUCER</span></h2>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+
+    <div class="section-head">
+      <small>Gallery</small>
+      <h2>The Camp</h2>
+    </div>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-col">
+        <div class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?q=80&w=900">
+        </div>
+      </div>
+
+      <div class="gallery-col">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=900">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=900">
+        </div>
+      </div>
+
+      <div class="gallery-col">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?q=80&w=900">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=900">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+
+    <h2>BULLYCAMPCALB<br><span>KENNEL</span></h2>
+
+    <p>
+      Interested in GOTTY, future productions, or BullyCampCalb Kennel?
+      Message directly on Instagram.
+    </p>
+
+    <a href="https://instagram.com/bullycampcalb_martinez" class="btn" target="_blank">
+      Message On Instagram
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  BullyCampCalb Kennel © 2026 • Orlando Florida • GOTTY • Micro Bully
+</footer>
+
+</body>
+</html>
